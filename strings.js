@@ -166,3 +166,36 @@ padded = text.padEnd(4, '0'); // 5000
 numb = 5;
 text = numb.toString();
 padded = text.padEnd(4, '0'); // 5000
+
+// Extraindo caracteres de uma string
+// string.charAt(indice) -> retorna o caractere no indice especificado
+text = 'HELLO WORLD';
+let char = text.charAt(0); // H
+char = text.charAt(-1); // ''
+
+// string.charCodeAt(indice) -> retorna o código UTF-16 (0 ~ 65535) do caractere no indice especificado
+char = text.charCodeAt(0); // 72
+
+
+// ECMAScript5 (2009) permite acesso a propriedade [] em strings
+char = text[0];
+
+
+/*
+    NOTA
+    Acesso a propriedade pode ser um pouco imprevísivel
+    * Faz parecer que uma string é um array, mas não é.
+    * Se nenhum caractere for encontrado, [] retorna undefined, enquanto charAt() retorna uma string vazia
+    * É somente-leitura. str[0] = 'A' não gera erros (Mas não funciona!)
+*/
+
+// Convertendo uma string para um array
+// string.split(separador) -> retorna um array separado pelo separador
+text = 'Hello World';
+let strArray = text.split(' '); // ['Hello', 'World']
+
+// se o separador for omitido retorna a string inteira em um único indice no array
+strArray = text.split() // ['Hello World']
+
+// se o separador for uma string vazia retorna um array com todos os caracteres da string
+strArray = text.split(''); // ['H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd']
