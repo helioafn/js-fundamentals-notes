@@ -7,7 +7,7 @@ let text = 'The revolution will not be televised';
 // const badString2 = 'This is a test;
 // const badString3 = This is a test';
 
-// Escapando caracteres  (procurar por Escaping sequences para mais)
+// Escapando caracteres  (procurar por Escaping sequences para ler mais sobre)
 const bigmouth = 'I\'ve got no right to take my place...';
 
 /*
