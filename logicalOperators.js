@@ -120,7 +120,6 @@ resultado = 1 && 2 && 3; // 3, o último valor
 resultado = !true; // false
 resultado = !0; // true
 
-if (pass === 'TheMaster') {
 // um duplo NOT (!!) as vezes é usado para converter um valor para booleano
 resultado = !!'non-empty string'; // true
 resultado = !!null;
