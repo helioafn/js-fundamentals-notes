@@ -20,6 +20,12 @@ resultado = false || true; // true
 resultado = true || false; // true
 resultado = false || false; // false
 
+/*
+    Valores falsy (que são convertidos para false em testes booleanos):
+    false, undefined, null, 0, NaN, '' (string vazia).
+    Valores truthy: quaisquer outros valores que não os anteriores.
+*/
+
 // Se um operando não é um booleano, ele é convertido para um para o cálculo.
 // lembrar que o número 1 é tratado como true, e o número 0 como false
 if (1 || 0) {
@@ -114,6 +120,7 @@ resultado = 1 && 2 && 3; // 3, o último valor
 resultado = !true; // false
 resultado = !0; // true
 
+if (pass === 'TheMaster') {
 // um duplo NOT (!!) as vezes é usado para converter um valor para booleano
 resultado = !!'non-empty string'; // true
 resultado = !!null;
@@ -157,7 +164,7 @@ if (age < 14 || age > 90) {
 */
 let userName = prompt('Quem é você?', '');
 if (userName === 'Admin') {
-    
+
     let password = prompt('Sua senha?', '');
 
     if (password === 'TheMaster') {
@@ -173,3 +180,9 @@ if (userName === 'Admin') {
 } else {
     alert('Não conheço você');
 }
+
+// Operador ternário (?)
+// condição ? se true executa esse código : se não executa esse código
+let isBirthday = true;
+const saudacao = isBirthday ? 'Feliz aniversário Sr. Smith - esperamos que tenha um ótimo dia!'
+    : 'Bom dia Sr. Smith.';
