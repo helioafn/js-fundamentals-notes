@@ -97,14 +97,18 @@ console.log(de); // 'Ann'. O valor de 'de' é o mesmo, pois a função modificou
 // Valores padrão
 // se uma função é chamada, mas um argumento não é fornecido, então o valor correspondente é undefined
 // Nossas funções podem ser chamadas com só um argumento.
+
 showingNicerMessage('Hélio'); // '*Hélio*: undefined'
+
 // Isso não é um erro, como um valor para mensagem não foi passado, logo seu valor é undefined
 // Podemos especificar um valor padrão (para uso, se tal argumento for omitido) para um parâmetro na 
 // declaração da função usando '='.
+
 function showMessageWithDefaultParameter(de, mensagem = 'Nenhum texto foi fornecido') {
     console.log(de + ': ' + mensagem);
 }
 showMessageWithDefaultParameter('Hélio'); // 'Hélio: Nenhum texto foi fornecido'
+
 // o valor padrão também é usado se o parâmetro existe, mas é estritamente igual a undefined
 showMessageWithDefaultParameter('Hélio', undefined); // 'Hélio: Nenhum texto foi fornecido'
 
@@ -112,10 +116,12 @@ showMessageWithDefaultParameter('Hélio', undefined); // 'Hélio: Nenhum texto f
 // é calculada e atribuida ao parâmetro se um parâmetro está faltando. Então o seguinte é possível:
 // function messageWithFunctionDefault(de, mensagem = outraFunção()) { // código }
 
-// Valores padrão alternativos
-// As vezes faz sentido atribuir valores padrão para parâmetros em um outro estágio depois da declaração
-// da função.
-// Podemos checar se o parâmetro é passado durante a execução da função, comparando com undefined
+/* 
+    Valores padrão alternativos
+    As vezes faz sentido atribuir valores padrão para parâmetros em um outro estágio depois da declaração
+    da função.
+    Podemos checar se o parâmetro é passado durante a execução da função, comparando com undefined
+*/
 function messageWithLaterCheck(mensagem) {
     // ...
     if (mensagem === undefined) { text = 'Mensagem vazia'; }
@@ -212,13 +218,7 @@ let resultado = sum(1, 2); // 3
 // Funções devem ser curtas e fazer exatamente uma coisa. Se essa coisa é grande, talvez valha a pena
 // dividi-lá em funções menores. Nem sempre seguir essa regra é fácil, mas com certeza é algo bom.
 
-/*
-    Resumo sobre Funções
-    * valores passado para a função como parâmetros são copiadas para as variáveis locais da função.
-    * Uma função pode acessar variáveis externas. Mas funciona somente de dentro para fora. Código fora
-    da função não vê suas variáveis locais.
-    * Uma função pode retornar um valor. Se não retornar, o seu resultado é undefined.
-*/
+
 
 // Function expressions
 // Em JavaScript, uma função não é uma estrutura 'mágica' da linguagem, mas um tipo de valor especial
@@ -238,9 +238,11 @@ function sayHello() {
 // Em situações mais avançadas, uma função pode ser criada e imediatamente ser chamada ou 'agendada' para
 // uma execução futura, não armazenada em algum local, mas permanecendo anônima.
 
-// Função é um valor
-// Vamos reiterar: não importa como uma função é criada, ela é um valor. Até podemos imprimir seu valor
-// usando alert() (ou console.log())
+/* 
+    Função é um valor
+    Vamos reiterar: não importa como uma função é criada, ela é um valor. Até podemos imprimir seu valor
+    usando alert() (ou console.log())
+*/
 console.log(sayHi); // exibe o corpo da função.
 console.log(sayHello); // exibe o corpo da função.
 
@@ -250,7 +252,91 @@ func = sayHello(); // chamando a função e atribuindo seu valor de retorno para
 
 // Ambas podem ser chamadas como sayHi() e func()
 
-// Continuar de callback functions 
+// Callback Functions
+// Vamos olhar mais exemplos usando funções como valores e usando function expressions
+
+// function ask(question, yes, no) {
+//     // question = Pergunta a se fazer
+//     // yes = função a executar se a resposta for sim (true)
+//     // no = função a executar caso a resposta seja não (false)
+//     if (confirm(question)) yes()
+//     else no();
+// }
+
+// function showOk() {
+//     console.log('You agreed');
+// }
+
+// function showCancel() {
+//     console.log('You cancelled the execution.');
+// }
+
+// // chamando a função ask
+// ask('Do you agree?', showOk, showCancel);
+
+/* 
+    Os argumentos showOk e showCancel da função ask, são chamados de callback functions (ou só callbacks)
+    A ideia é que nós passarmos uma função e esperar que seja chamada de volta depois se necessário.
+    No nosso caso, showOk se torna o callback pra 'yes', e showCancel para 'no'.
+*/
+
+// Podemos usar functions expressions para escrever uma função equivalente mais curta
+
+// ask('Do you agree?',
+//     function() {console.log('You agreed');}, 
+//     function() { console.log('You cancelled the execution');
+// });
+
+/* 
+    Aqui as funções são declaradas dentro da chamada de ask(...). Elas não possuem nome,
+    então são chamadas de funções anônimas. Tais funções não são acessíveis fora de ask 
+    (porque não estão atribuidas a variáveis), mas é o que queremos aqui.
+    Tal código aprece nos nossos scripts naturalmente, está no espírito do JavaScript.
+*/
+
+
+/* 
+    Function expression vs Function declaration
+    Vamos formular as principais diferenças entre function declarations e expressions.
+    Primeiro, a sintaxe.
+    Function declaration: uma função, inserida como uma declaração separada no fluxo principal
+    do código.
+    function sum(a, b) { return a + b; }
+
+    Function expression: uma função criada em uma expressão ou dentro de outro construtor.
+    Aqui a função é criada no lado direito de uma atribuição (=).
+    const sum = function(a, b) { return a + b; };
+
+    A diferença mais sútil é *quando* uma função é criada pelo motor do JavaScript
+    Uma function expression é criada quando a execução chega em sua declaração e é usada somente
+    a partir daquele momento.
+
+    Com uma function declaration é diferente, a função pode ser chamada antes da sua definição
+    Por exemplo: uma function declaration no escopo global é visível no script inteiro, independente
+    de onde esteja.
+
+    Isso é por conta dos algoritmos internos. Quando o JavaScript se prepara para executar o script,
+    primeiro procura por functions declarations no escopo global e cria as funções. Podemos pensar
+    nisso como 'fase de inicialização'. Depois de todas as functions declarations serem processadas,
+    o código é executado. Então tem acesso a essas funções.
+
+    Outra característica especial das function declarations é seu escopo de bloco
+    **No modo estrito (strict mode)**, quando uma function declaration é usada dentro de um bloco
+    de código, é visível em qualquer lugar dentro daquele bloco, mas não fora dele.
+*/
+
+/*
+    Quando usar Function declaration versus Function expression?
+    Pela regra de ouro, quando nos precisamos declarar uma função, a primeira coisa a considerar
+    é uma function declaration. Nos dá mais liberdade em como organizar o nosso código, porque nós
+    podemos chamar tais funções antes delas serem declaradas.
+    E também é melhor para a legibilidade, é mais fácil procurar por function f() {} no código, do que
+    let f = function() {};.
+    Mas se uma function declaration não nos serve por algum motivo, ou precisamo de uma declaração
+    condicional, então function expression deve ser usada.
+*/
+
+
 // Atividades
 function checkAge(age) {
     return (age > 18) ? true : confirm('Seus pais lhe deram permissão?');
@@ -282,3 +368,18 @@ function pow(x, n) {
 
     return result;
 }
+
+/*
+    Resumo sobre Funções
+    * valores passado para a função como parâmetros são copiadas para as variáveis locais da função.
+    * Uma função pode acessar variáveis externas. Mas funciona somente de dentro para fora. Código fora
+    da função não vê suas variáveis locais.
+    * Uma função pode retornar um valor. Se não retornar, o seu resultado é undefined.
+    * Funções são valores. Eles podem ser copiados, atribuidos ou declarados em qualquer local do código
+    * Se uma função é criada como uma declaração separada no fluxo principal do programa, então é chamada
+    de 'function declaration'.
+    * Se a função é criada como parte de uma expressão, então é chamada de 'function expression'.
+    * Function declarations são processados antes do bloco de código ser executada, e são visíveis em
+    qualquer local do bloco.
+    * Function expressions são criadas quando o fluxo de execução chega neles.
+*/
