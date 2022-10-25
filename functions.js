@@ -336,6 +336,32 @@ func = sayHello(); // chamando a função e atribuindo seu valor de retorno para
     condicional, então function expression deve ser usada.
 */
 
+/*
+    Arrow functions
+    outra maneira simples e de sintaxe concisa para criar funções, que geralmente é melhor que
+    functions expressions.
+    São chamadas de 'arrow functions', pois sua sintaxe é a seguinte
+    let func = (args) => expression;
+*/
+
+// um exemplo
+let sum = (a, b) => a + b;
+console.log(sum(1, 2));
+
+// se a função só tem um parâmetro, os parênteses ao redor podem ser omitidos.
+let double = n => n * 2;
+console.log(double(7));
+
+// se a função não tem parâmetros, os parênteses ficam vazios, mas precisam estar presentes.
+let greetings = () => console.log('Hello');
+
+// Uma arrow function de múltiplas linhas tem a seguinte sintaxe
+sum = (a, b) => {
+    let resultado = a + b;
+    return resultado; // se for delimitado um bloco de código, então precisamos de um return explicito.
+};
+
+sum(1, 2);
 
 // Atividades
 function checkAge(age) {
@@ -382,4 +408,8 @@ function pow(x, n) {
     * Function declarations são processados antes do bloco de código ser executada, e são visíveis em
     qualquer local do bloco.
     * Function expressions são criadas quando o fluxo de execução chega neles.
+    * Arrow functions são úteis para ações simples, podendo aparecer de duas formas
+    Sem chaves (args) => expressão, aqui a função calcula e retorna o resultado. 
+    Com chaves (args) => { corpo da função }, o bloco de código nos permite uma função mais complexa,
+    mas precisamos de um return explicito para retornar algo.
 */
