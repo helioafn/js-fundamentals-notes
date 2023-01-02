@@ -88,7 +88,7 @@ resultado = undefined == 0; // false
 /*
     As duas primeiras comparações retornam false porque undefined é convertido para NaN e o mesmo é um valor numérico especial que
     retorna false para todas as comparações
-    A igualdade (==) retorna false, pois undefined só é igual a null e undefined e nenhum outro valor.
+    A igualdade (==) retorna false, pois undefined só é igual a null, undefined e nenhum outro valor.
 */
 
 /*

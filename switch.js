@@ -117,4 +117,4 @@ switch (mes) {
         break;
     default:
         console.log('Alguma coisa muito errada aconteceu :(');
-} // O output vai ser 'Outono' (data da escrita desse código)
+} // O output vai ser 'Inverno' (data da escrita desse código)

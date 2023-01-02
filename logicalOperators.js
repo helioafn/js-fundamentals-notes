@@ -72,7 +72,7 @@ false || alert('printed'); // aqui a função é executada, pois o operador vê 
 
 /* 
     AND (&&)
-    Na programação clássica, AND retorna true somente e somente se ambos os operadores forem truthy, caso contrário retorna false
+    Na programação clássica, AND retorna true somente e somente se ambos os operandos forem truthy, caso contrário retorna false
 */
 resultado = true && true; // true
 resultado = false && true; // false
@@ -134,13 +134,13 @@ resultado = Boolean(null); // false
 // antes de && ou ||
 
 // Alguns exemplos usando operadores lógicos
-// Escreva uma condição que cheque se a idade está entre 14 e 90 (ambos incluso)
+// Escreva uma condição que cheque se a idade está entre 14 e 90 (ambos inclusos)
 let age = 25;
 if (age >= 14 && age <= 90) {
     alert('Está no intervalo');
 }
 
-// Escreva uma condição que cheque se a idade não está entre 14 e 90 (ambos incluso)
+// Escreva uma condição que cheque se a idade não está entre 14 e 90 (ambos inclusos)
 // Crie duas variantes: uma usando o operador (!) e o segundo sem.
 if (!(age >= 14 && age <= 90)) {
     alert('Não está no intervalo');

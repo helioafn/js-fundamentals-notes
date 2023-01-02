@@ -1,4 +1,4 @@
-/*  Declaração condicionais
+/*  Declaração de condicionais
     JavaScript possui as seguintes declarações condicionais
     if -> para especificar um bloco de código a ser executado, se uma condição for verdadeira
     else -> para especificar um bloco de código a ser executado, se a mesma condição for falsa

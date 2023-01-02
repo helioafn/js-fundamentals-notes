@@ -87,7 +87,7 @@ part = txt.substring(7); // Banana, Kiwi
 // String.replace()
 // replace() substitui um valor especificado por outro em uma string
 text = 'Please visit Microsoft!';
-let newText = text.replace('Microsoft', 'W3Schools'); // 'Please visit W3Schools!'
+let newText = text.replace('Microsoft', 'TheOdinProject and W3Schools'); // 'Please visit W3Schools!'
 
 /*
     NOTA

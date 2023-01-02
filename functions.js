@@ -1,7 +1,7 @@
 /*
     Funções
     Já vimos exemplos de funções, como alert(message), prompt(message, default), confirm(question).
-    Mas podemos declaras as nossas próprias funções.
+    Mas podemos declarar as nossas próprias funções.
 */
 
 // Function declaration
@@ -60,11 +60,11 @@ console.log(username); // John, sem mudanças, a função não acessou a variáv
 
 /*
     Variáveis globais
-    Variáveis declaradas fora de qualquer função, como username no código acima, são chamadas
+    Variáveis declaradas fora de qualquer função, como 'username' no código acima, são chamadas
     globais
     Essas variáveis são visíveis de qualquer função (ao menos que sejam transpostas por variáveis locais)
     É uma boa prática minimizar o uso das variáveis globais. Código moderno tem poucas ou nenhuma.
-    A maioria das variáveis residem dentro das suas funções. Apesar de que podem ser úteiis para armazenar
+    A maioria das variáveis residem dentro das suas funções. Apesar de que podem ser úteis para armazenar
     dados a nível de projeto.
 */
 
@@ -109,7 +109,7 @@ function showMessageWithDefaultParameter(de, mensagem = 'Nenhum texto foi fornec
 }
 showMessageWithDefaultParameter('Hélio'); // 'Hélio: Nenhum texto foi fornecido'
 
-// o valor padrão também é usado se o parâmetro existe, mas é estritamente igual a undefined
+// o valor padrão também é usado se o parâmetro existe, e for estritamente igual a undefined
 showMessageWithDefaultParameter('Hélio', undefined); // 'Hélio: Nenhum texto foi fornecido'
 
 // Aqui 'nenhum texto foi fornecido' é uma string, mas pode ser uma expressão mais complexa, a qual só
@@ -136,10 +136,10 @@ function messageWithLaterCheck(mensagem) {
     // ...
 }
 
-// Os motores modernos de JavaScript suportam o operador de coalescência nula (??), é melhor quando
+// Os motores modernos de JavaScript suportam o operador de coalescência nula (??), é melhor usado quando
 // a maioria dos valores falsy, como 0, devem ser consideradas normal.
 function showCount(count) {
-    // if count é undefined ou null, exibe 'desconhecido'
+    // se count é undefined ou null, exibe 'desconhecido'
     console.log(count ?? 'desconhecido');
 }
 
@@ -185,7 +185,7 @@ let resultado = sum(1, 2); // 3
 /* 
     Nomeando funções
     Funções são ações. Então geralmente seu nome é um verbo. Deve ser curto, o mais preciso possivel
-    e descreva o que a função faz, para quem ler o código tem uma indicação do que a função faz.
+    e descreva o que a função faz, para quem ler o código ter uma indicação do que a função faz.
     É uma prática difundida iniciar uma função com um prefixo verbal que vagamente descreve a ação.
     Deve-se ter um acordo entre o time para o significado dos prefixos
 */
@@ -315,10 +315,10 @@ func = sayHello(); // chamando a função e atribuindo seu valor de retorno para
     Por exemplo: uma function declaration no escopo global é visível no script inteiro, independente
     de onde esteja.
 
-    Isso é por conta dos algoritmos internos. Quando o JavaScript se prepara para executar o script,
+    Isso acontece por conta dos algoritmos internos. Quando o JavaScript se prepara para executar o script,
     primeiro procura por functions declarations no escopo global e cria as funções. Podemos pensar
     nisso como 'fase de inicialização'. Depois de todas as functions declarations serem processadas,
-    o código é executado. Então tem acesso a essas funções.
+    o código é executado. Então se tem acesso a essas funções.
 
     Outra característica especial das function declarations é seu escopo de bloco
     **No modo estrito (strict mode)**, quando uma function declaration é usada dentro de um bloco
@@ -332,8 +332,8 @@ func = sayHello(); // chamando a função e atribuindo seu valor de retorno para
     podemos chamar tais funções antes delas serem declaradas.
     E também é melhor para a legibilidade, é mais fácil procurar por function f() {} no código, do que
     let f = function() {};.
-    Mas se uma function declaration não nos serve por algum motivo, ou precisamo de uma declaração
-    condicional, então function expression deve ser usada.
+    Mas se uma function declaration não nos serve por algum motivo, ou precisamos de uma declaração
+    condicional, então uma function expression deve ser usada.
 */
 
 /*
@@ -397,7 +397,7 @@ function pow(x, n) {
 
 /*
     Resumo sobre Funções
-    * valores passado para a função como parâmetros são copiadas para as variáveis locais da função.
+    * valores passados para a função como parâmetros são copiadas para as variáveis locais da função.
     * Uma função pode acessar variáveis externas. Mas funciona somente de dentro para fora. Código fora
     da função não vê suas variáveis locais.
     * Uma função pode retornar um valor. Se não retornar, o seu resultado é undefined.
@@ -405,9 +405,9 @@ function pow(x, n) {
     * Se uma função é criada como uma declaração separada no fluxo principal do programa, então é chamada
     de 'function declaration'.
     * Se a função é criada como parte de uma expressão, então é chamada de 'function expression'.
-    * Function declarations são processados antes do bloco de código ser executada, e são visíveis em
+    * As Function declarations são processadas antes do bloco de código ser executada, e são visíveis em
     qualquer local do bloco.
-    * Function expressions são criadas quando o fluxo de execução chega neles.
+    * As Function expressions são criadas quando o fluxo de execução chega neles.
     * Arrow functions são úteis para ações simples, podendo aparecer de duas formas
     Sem chaves (args) => expressão, aqui a função calcula e retorna o resultado. 
     Com chaves (args) => { corpo da função }, o bloco de código nos permite uma função mais complexa,
