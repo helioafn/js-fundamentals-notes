@@ -159,3 +159,49 @@ Array.isArray(points); // true
 
 // Solução 2: O operador 'instanceof' retorna um booleano se um objeto for criado por um dado construtor
 points instanceof Array; // true
+
+
+// Mais métodos de Array
+
+/* 
+    Array.toString() => converte um array para uma string (separada por vírgula) dos elementos do array.
+    Array.join(separador) => similar a toString(), porém permite especificar um separador.
+    Array.pop() => remove o último elemento do array e retorna o valor do elemento removido.
+    Array.push(elemento) => adiciona um elemento ao final do array e retorna o novo tamanho do array.
+    Array.shift() => remove o primeiro elemento do array, 'move' todos os outros elementos para um índice abaixo
+    (para a esquerda) e retorna o valor removido.
+    Array.unshift() => adiciona um item no inicio do array, 'move' todos os elementos um índice acima (para a direita)
+    e retorna o novo tamanho do array.
+    
+    Usando o operador delete => delete fruits[0];
+    !! Cuidado a se tomar quando usar delete é que ele deixa 'buracos' undefined no array,
+    em vez disso use pop() ou shift().
+
+    Combinando (merging) arrays
+    points.concat(array1, ..., arrayN) => retorna um novo array juntando os elementos de points
+    com o array1 até arrayN.
+
+    Fatiando e juntando (splicing and slicing) arrays
+    Array.splice(indiceOndeInserir, numElementosARemover, ...elementosAAdicionar) =>
+    O primeiro parâmetro indica onde inserir os novos elementos no array.
+    O segundo parâmetro indica quantos elementos devem ser removidos.
+    Os parâmetros seguintes definem os elementos a serem adicionados.
+
+    splice() também pode ser usado para remover elementos:
+        fruits.splice(0, 1);
+    O argumento de valor zero indica onde vai ser 'adicionado', o argumento de valor 1 indica quantos 
+    elementos vão ser removidos e não estamos adicionado nenhum elemento, logo remove 
+    o elemento sem deixar 'buracos' undefined no array.
+
+    Array.slice(indiceInicial, indiceFinal) => retorna um novo array com os elementos de indiceInicial até
+    indiceFinal (não incluso).
+    Se o indiceFinal for omitido, slice() fatia o resto do array.
+
+    toString() automático: JavaScript automaticamente converte um array para uma string separada por vírgula
+    quando um valor primitivo é esperado. Esse é o caso quando se tenta imprimir um array.
+    console.log(fruits); // ['Maracujá', 'Apple', 'Mango', 'Abacaxi', 'Uva', 'Melão']
+
+    !! Todos os objetos JavaScript tem um método toString().
+*/
+
+
