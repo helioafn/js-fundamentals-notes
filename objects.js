@@ -167,3 +167,60 @@ obj.__proto__ = 5; // Atribui um número
 obj.__proto__; // [object Object]: o valor é um objeto, não funcionou como esperado.
 
 
+/*
+    Teste de existencia de propriedade, operador 'in'
+    Uma característica notavel dos objetos em JavaScript, é possível acessar qualquer propriedade. Não vão ter erros se
+    a propriedade naõ existir! Ler uma propriedade não existente, retorna undefined. 
+    Assim podemos facilmente testar se tal propriedade existe.
+*/ 
+user = {};
+user.propriedadeNaoCriada === undefined; // true quer dizer que a propriedade 'propriedadeNaoCriada' não existe.
+
+// Existe o operador 'in' para isso. A sintaxe é: 'key' in object
+
+user = {
+    name: 'John',
+    age: 30,
+};
+
+'age' in user; // true, user.age exists
+'blabla' in user; // false, user.blabla doesn't exist
+
+// Note que no lado direito do operador deve ser o nome da propriedade (geralmente uma string), omitido as aspas, 
+// significa que a variável deve conter o nome a ser testado, por exemplo:
+user = { age: 30, };
+key = 'age';
+key in user; // true, a propriedade 'age' existe.
+
+// Na maioria dos casos a comparação a comparação com undefined funciona. Mas tem um caso especial que falha, e o operador
+// in funciona corretamente. Quando uma propriedade existe, mas armazena undefined.
+obj = {
+    test: undefined,
+};
+
+obj.test; // undefined, então a propriedade não existe?
+'test' in obj; // true, a propriedade existe!
+
+
+// O laço for..in: Para percorrer todas as chaves de um objeto, existe o loop for..in
+// A sintaxe:
+
+/*
+    for (key in object) { // código }
+    Vejamos um exemplo:
+*/
+user = {
+    name: 'John',
+    age: 30,
+    isAdmin: true,
+};
+
+for (let key in user) {
+    console.log(key); // name, age, isAdmin
+
+    // valor das chaves
+    console.log(user[key]); // John, 30, true
+}
+
+
+
