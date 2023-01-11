@@ -72,39 +72,127 @@ for (let i = 0; i < cats.length; i++) {
 // e continua o fluxo do código.
 
 // No código abaixo, queremos procurar um número pelo nome de contato em uma lista telefônica
-const contacts = [
-    'Chris:2232322',
-    'Sarah:3453456',
-    'Bill:7654322',
-    'Mary:9998769',
-    'Diane:9384975',
-    'Helio:9123545'
-];
+// const contacts = [
+//     'Chris:2232322',
+//     'Sarah:3453456',
+//     'Bill:7654322',
+//     'Mary:9998769',
+//     'Diane:9384975',
+//     'Helio:9123545'
+// ];
+
+// const para = document.querySelector('p');
+// const input = document.querySelector('input');
+// const btn = document.querySelector('button');
+
+// btn.addEventListener('click', () => {
+//     const searchName = input.value.toLowerCase();
+//     input.value = '';
+//     input.focus();
+//     para.textContent = '';
+    
+//     for (const contact of contacts) {
+//         const splitContact = contact.split(':');
+
+//         // Caso encontre o nome na lista coloca o texto no paragráfo e sai do loop
+//         if (splitContact[0].toLowerCase() === searchName) {
+//             para.textContent = `${splitContact[0]}'s number is ${splitContact[1]}.`;
+//             break;
+//         }
+//     }
+
+//     if (para.textContent === '') {
+//         para.textContent = 'Contact not found.';
+//     }
+// });
+
+
+/*  
+    Pulando iterações com a declaração 'continue'
+    a declaração 'continue' é semelhante a 'break', mas em vez de sair do loop completamente
+    avança para a próxima iteração do loop.
+
+    Vejamos nesse exemplo que recebe um input e retorna somente os números que são quadrados perfeitos.
+*/
 
 const para = document.querySelector('p');
 const input = document.querySelector('input');
 const btn = document.querySelector('button');
 
 btn.addEventListener('click', () => {
-    const searchName = input.value.toLowerCase();
+    para.textContent = 'Output: ';
+    const num = input.value;
     input.value = '';
     input.focus();
-    para.textContent = '';
-    
-    for (const contact of contacts) {
-        const splitContact = contact.split(':');
 
-        // Caso encontre o nome na lista coloca o texto no paragráfo e sai do loop
-        if (splitContact[0].toLowerCase() === searchName) {
-            para.textContent = `${splitContact[0]}'s number is ${splitContact[1]}.`;
-            break;
+    // Repete de 1 até o número do input, pulando quadrados não-perfeitos
+    for (let i = 1; i < num; i++) {
+        let sqRoot = Math.sqrt(i);
+        if (Math.floor(sqRoot) !== sqRoot) {
+            continue;
         }
-    }
-
-    if (para.textContent === '') {
-        para.textContent = 'Contact not found.';
+        para.textContent += `${i} `;
     }
 });
 
 
-// Pulando iterações com a declaração 'continue'
+
+/*
+    while e do..while
+    esses dois loops tem seu uso quando não sabemos quantas vezes vamos repetir um bloco de código.
+    a diferença básica entre os dois é que: o bloco de código de um loop while pode não ser executado nenhuma vez,
+    enquanto o do..while executa pelo menos uma vez.
+
+    sintaxe de um loop while:
+
+    inicializador
+    while (condicao) { 
+        // codigo
+        expressão-final
+    }
+
+    sintaxe de um loop do..while:
+
+    inicializador
+    do {
+        // código
+        expressão-final
+    } while (condicao)
+
+    um loop for pode ser reescrito para while e vice-versa.
+*/
+
+// Exemplo usando while
+let myFavoriteCats = 'My cats are called ';
+
+let i = 0;
+while (i < cats.length) {
+    if (i === cats.length - 1) {
+        myFavoriteCats += `and ${cats[i]}.`;
+    } else {
+        myFavoriteCats += `${cats[i]}, `;
+    }
+
+    i++;
+}
+
+console.log(myFavoriteCats); // My cats are called Leopard, Serval, Jaguar, Tiger, Caracal, and Lion.
+
+
+// Exemplo usando do-while
+
+i = 0;
+myFavoriteCats = 'My cats are called ';
+
+do {
+    if (i === cats.length - 1) {
+        myFavoriteCats += `and ${cats[i]}.`;
+    } else {
+        myFavoriteCats += `${cats[i]}, `;
+    }
+
+    i++;
+} while (i < cats.length);
+
+console.log(myFavoriteCats); // My cats are called Leopard, Serval, Jaguar, Tiger, Caracal, and Lion.
+
