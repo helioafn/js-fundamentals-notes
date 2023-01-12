@@ -17,7 +17,7 @@ user = {
         1. A primeira propriedade tem o nome 'name' e o valor 'John'
         2. A segunda propriedade tem o nome 'age' e o valor 30
 
-    Podemos adicionar, remover e adicionar propriedades em qualquer momento.
+    Podemos adicionar, remover e ler propriedades em qualquer momento.
 
     Valores de propriedades são acessíveis usando a notação de ponto:
     ex: console.log(user.name, user.age);
@@ -222,5 +222,108 @@ for (let key in user) {
     console.log(user[key]); // John, 30, true
 }
 
+/* 
+    Ordenado como um objeto
+    Os objetos são ordenados? Se percorremos um objeto, nos recebemos todas as propriedades na mesma ordem na qual foram
+    adicionados? É confiável?
+    Resposta curta: é ordenado de uma "maneira especial": propriedades de inteiros (de números inteiros) são ordenadas, outras aparecem na ordem de
+    criação
+
+    Exemplo
+*/
+let codes = {
+    '49': 'Germany',
+    '41': 'Switzerland',
+    '44': 'Great Britain',
+    '1': 'USA',
+};
+
+for (let code in codes) {
+    console.log(code); // 1, 41, 44, 49
+}
+
+/*
+    Propriedades de inteiros? O que raios é isso?
+    Esse termo significa que uma string pode ser convertida de e para um inteiro sem mudança.
+    Então '49' é uma nome de propriedade inteira, porque quando é transformada para um inteiro e de volta,
+    ainda é o mesmo. Porém '+49' e '1.2' não são.
+
+    String(Math.trunc(Number('49'))); // '49', é o mesmo, logo é propriedade de inteiro
+    String(Math.trunc(Number('+49'))); // '49', não é o mesmo '+49', logo não é propriedade de inteiro.
+    String(Math.trunc(Number('1.2'))); // '1', naõ é o mesmo '1.2', logo não é propriedade de inteiro.
+
+    Por outro lado se as chaves não são inteiros, então elas são listadas na ordem de criação
+    Exemplo:
+*/
+user = {
+    name: 'John',
+    surname: 'Smith',
+};
+
+user.age = 25; // Adicionou mais uma propriedade
+
+for (let prop in user) {
+    console.log(prop); // name, surname, age
+}
 
 
+/*
+    Os objetos que estudamos nesse capítulo são chamados de 'objetos planos'. Existem diversos tipos de objetos no JavaScript:
+    Array, para armazenar coleções de dados ordenados. 
+    Date, para armazenar informação sobre a data e o tempo
+    Error, para armazenar informação sobre um erro
+    E diversos outros.
+*/
+
+
+// Exercícios
+/*  Olá Objeto!
+    Escreva o código, uma linha para cada ação:
+    Criar um objeto vazio 'user'.
+    Adicionar a propriedade 'name' com o valor 'John'.
+    Adicionar a propriedade 'surname' com o valor 'Smith'.
+    Mudar o valor de 'name' para 'Pete'.
+    Remover a propriedade 'name' do objeto.
+*/
+user = {};
+user.name = 'John';
+user.surname = 'Smith';
+user.name = 'Pete';
+delete user.name;
+
+// Cheque para vazio
+// Escreva a função isEmpty(obj) a qual retorna true se o objeto não tem propriedades, caso contrário false.
+function isEmpty(obj) {
+    for (let prop in obj) {
+        return false;
+    }
+    return true;
+}
+
+// Soma de propriedades do objeto
+// Temos um objeto armazenando os salários do nosso time. Escreva código que some todos os salários e armazene na variável soma
+let salaries = {
+    John: 100,
+    Ann: 160,
+    Pete: 130,
+};
+
+let soma = 0;
+
+if (!isEmpty(salaries)) {
+    for (let prop in salaries) {
+        soma += salaries[prop];
+    }
+    console.log(soma);
+} else {
+    console.log(soma);
+}
+
+// Multiplicar propriedades númericas por 2
+// Crie uma função multiplyNumeric(obj) que multiplque todas as propriedades numéricas de obj por 2
+function multiplyNumeric(obj) {
+    for (let prop in obj) {
+        if (typeof obj[prop] !== 'number') continue;
+        obj[prop] *= 2;
+    }
+}
