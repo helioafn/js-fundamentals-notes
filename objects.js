@@ -25,6 +25,15 @@ user = {
 
 // O valor pode ser de qualquer tipo
 user.isAdmin = true;
+// Aqui a propriedade é um objeto
+user.preferences = {
+    theme: 'dark high contrast',
+    fontSize: 16,
+};
+
+// Para acessar a propriedade que é um objeto precisamos encadear mais um ponto, da seguinte maneira:
+user.preferences.theme; // dark high contrast
+user.preferences.fontSize; // 16
 
 // Para remover uma propriedade, podemos usar o operador 'delete'
 delete user.age;
@@ -266,64 +275,80 @@ for (let prop in user) {
     console.log(prop); // name, surname, age
 }
 
+// Palavra-chave 'this': se refere ao objeto atual no qual o código está sendo escrito.
+
+/* 
+    Introduzindo construtores: Usar objetos literais quando se precisa criar um único objeto é ok, porém
+    quando precisamos criar mais de um objeto começa a ser muito inadequado, pois teriamos que escrever o
+    mesmo código para cada objeto que criamos, e se quisessemos mudar propriedades do objeto, por exemplo,
+    adicionar uma propriedade 'height', precisariamos atualizar todos os objetos.
+
+    Gostariamos de alguma maneira definir a forma do objeto, como um conjunto de métodos e propriedades
+    que o mesmo pode ter. E então criar quantos objetos fossem necessários, somente mudando os valores 
+    de suas propriedades.
+*/
+
+
+// A primeira versão disso é somente uma função
+function createPerson(name) {
+    const obj = {};
+    obj.name = name;
+    obj.introduceSelf = function() {
+        console.log(`Hi! I'm ${this.name}.`);
+    };
+    return obj;
+}
+
+// Note que createPerson() requer um argumento 'name' para definir o valor da propriedade 'name', mas o valor de 
+// introduceSelf() vai ser o mesmo para todos os objetos criados usando essa função. Esse é um padrão comum na
+// criação de objetos.
+
+
+// Definido nosso "construtor", podemos criar quantos objetos quisermos.
+const salva = createPerson('Salva');
+salva.name; // Salva
+salva.introduceSelf(); // Hi! I'm Salva.
+
+const frankie = createPerson('Frankie');
+frankie.name; // Frankie
+frankie.introduceSelf(); // Hi! I'm Frankie.
+
+/* 
+    Um construtor real
+    Nossa primeira versão de um 'construtor' funciona, porém precisamos inicializar um objeto, e retorná-lo.
+    Uma maneira melhor é usar um construtor, que em resumo é uma função chamada usando a palavra-chave 'new'.
+    Quando um construtor é chamado, ele vai:
+        Criar um novo objeto;
+        Vincular(ligar) 'this' ao novo objeto, para que você possa referir a this no código do construtor;
+        Executar o código no construtor;
+        Retornar o novo objeto.
+    
+    Construtores, por convenção, iniciam com uma letra maiúscula e são nomeados pelo tipo do objeto que eles criam.
+    Nossa primeira versão pode ser reescrita da seguinte maneira.
+*/
+
+function Person(name) {
+    this.name = name;
+    this.introduceSelf = function() {
+        console.log(`Hi! I'm ${this.name}.`);
+    };
+}
+
+// Para chamar o construtor, usamos 'new'.
+const helio = new Person('Hélio');
+helio.name; // Hélio
+helio.introduceSelf(); // Hi! I'm Hélio
+
+const lucas = new Person('Lucas');
+lucas.name; // Lucas
+lucas.introduceSelf(); // Hi! I'm Lucas
+
+
 
 /*
-    Os objetos que estudamos nesse capítulo são chamados de 'objetos planos'. Existem diversos tipos de objetos no JavaScript:
+    Os objetos que estudamos nesse capítulo são chamados de 'objetos planos' (ou literais). Existem diversos tipos de objetos no JavaScript:
     Array, para armazenar coleções de dados ordenados. 
     Date, para armazenar informação sobre a data e o tempo
     Error, para armazenar informação sobre um erro
     E diversos outros.
 */
-
-
-// Exercícios
-/*  Olá Objeto!
-    Escreva o código, uma linha para cada ação:
-    Criar um objeto vazio 'user'.
-    Adicionar a propriedade 'name' com o valor 'John'.
-    Adicionar a propriedade 'surname' com o valor 'Smith'.
-    Mudar o valor de 'name' para 'Pete'.
-    Remover a propriedade 'name' do objeto.
-*/
-user = {};
-user.name = 'John';
-user.surname = 'Smith';
-user.name = 'Pete';
-delete user.name;
-
-// Cheque para vazio
-// Escreva a função isEmpty(obj) a qual retorna true se o objeto não tem propriedades, caso contrário false.
-function isEmpty(obj) {
-    for (let prop in obj) {
-        return false;
-    }
-    return true;
-}
-
-// Soma de propriedades do objeto
-// Temos um objeto armazenando os salários do nosso time. Escreva código que some todos os salários e armazene na variável soma
-let salaries = {
-    John: 100,
-    Ann: 160,
-    Pete: 130,
-};
-
-let soma = 0;
-
-if (!isEmpty(salaries)) {
-    for (let prop in salaries) {
-        soma += salaries[prop];
-    }
-    console.log(soma);
-} else {
-    console.log(soma);
-}
-
-// Multiplicar propriedades númericas por 2
-// Crie uma função multiplyNumeric(obj) que multiplque todas as propriedades numéricas de obj por 2
-function multiplyNumeric(obj) {
-    for (let prop in obj) {
-        if (typeof obj[prop] !== 'number') continue;
-        obj[prop] *= 2;
-    }
-}

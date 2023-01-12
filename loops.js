@@ -115,25 +115,25 @@ for (let i = 0; i < cats.length; i++) {
     Vejamos nesse exemplo que recebe um input e retorna somente os números que são quadrados perfeitos.
 */
 
-const para = document.querySelector('p');
-const input = document.querySelector('input');
-const btn = document.querySelector('button');
+// const para = document.querySelector('p');
+// const input = document.querySelector('input');
+// const btn = document.querySelector('button');
 
-btn.addEventListener('click', () => {
-    para.textContent = 'Output: ';
-    const num = input.value;
-    input.value = '';
-    input.focus();
+// btn.addEventListener('click', () => {
+//     para.textContent = 'Output: ';
+//     const num = input.value;
+//     input.value = '';
+//     input.focus();
 
-    // Repete de 1 até o número do input, pulando quadrados não-perfeitos
-    for (let i = 1; i < num; i++) {
-        let sqRoot = Math.sqrt(i);
-        if (Math.floor(sqRoot) !== sqRoot) {
-            continue;
-        }
-        para.textContent += `${i} `;
-    }
-});
+//     // Repete de 1 até o número do input, pulando quadrados não-perfeitos
+//     for (let i = 1; i < num; i++) {
+//         let sqRoot = Math.sqrt(i);
+//         if (Math.floor(sqRoot) !== sqRoot) {
+//             continue;
+//         }
+//         para.textContent += `${i} `;
+//     }
+// });
 
 
 
@@ -196,3 +196,38 @@ do {
 
 console.log(myFavoriteCats); // My cats are called Leopard, Serval, Jaguar, Tiger, Caracal, and Lion.
 
+// Alguns exercícios usando loops
+
+// Use o loop for para exibir os números pares de 2 a 10
+for (let i = 2; i <= 10; i++) {
+    if (i % 2 !== 0) continue;
+    console.log(i);
+}
+
+// Reescrevendo loop for em while
+// Reescreva usando o loop abaixo usando while, sem mudar seu comportamento.
+// for (let i = 0; i < 3; i++) {
+//     alert( `number ${i}!`);
+// }
+
+// let j = 0;
+// while (j < 3) {
+//     alert(`number ${j}!`);
+//     j++;
+// }
+
+/* 
+    Repetindo até que o input esteja correto
+    Escreva um loop que peça por um número maior que 100. Caso o usuário entre outro número,
+    peça para inserirem novamente.
+    O loop deve pedir um número até que o usuário insira um número maior que 100 ou cancele o input ou 
+    insira uma linha vazia.
+    Assuma que o usuário só insere números.
+*/
+
+let userInput;
+do {
+    userInput = prompt('Enter a number greater than 100: ', '');
+    if (userInput === '' || userInput === null) break;
+    userInput = Number(userInput);
+} while (userInput <= 100);
