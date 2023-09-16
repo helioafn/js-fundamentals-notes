@@ -1,30 +1,72 @@
-<DOCTYPE html>
-    <html>
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-        <meta charset="utf-8">
-        <title>JavaScript Fundamentals</title>
-    </head>
+<head>
+  <meta charset="utf-8">
+  <title>JavaScript Fundamentals</title>
+</head>
 
-    <body>
-        <!-- Exemplo loop 1 -->
-        <!-- <button id="calculate">Calculate</button>
-            <button id="clear">Clear</button>
-            <p id="results"></p> -->
+<body>
+  <h1>This is my website</h1>
+  <!-- <label for="weather">Select the weather type today:</label>
+  <select name="" id="weather">
+    <option value="">--Make a choice--</option>
+    <option value="sunny">Sunny</option>
+    <option value="rainy">Rainy</option>
+    <option value="snowing">Snowing</option>
+    <option value="overcast">Overcast</option>
+  </select>
+  <p></p> -->
 
-        <!-- Exemplo break -->
-        <!-- <label for="search">Search by contact name: </label>    
-        <input type="text" id="search">
-        <button>Search</button>
-        <p></p> -->
+  <label for="theme">Select theme:</label>
+  <select id="theme">
+    <option value="white">White</option>
+    <option value="black">Black</option>
+  </select>
+  <script>
+    const selectBg = document.querySelector('select');
+    const html = document.querySelector('html');
+    document.body.style.padding = "10px";
 
-        <!-- exemplo continue -->
-        <!-- <label for="number-input">Enter number: </label>
-        <input type="text" id="number-input">
-        <button>Generate integer squares</button>
-        <p></p> -->
-        <script src="./loops.js"></script>
-    </body>
+    function update(bgColor, textColor) {
+      html.style.backgroundColor = bgColor;
+      html.style.color = textColor;
+    }
 
-    </html>
-</DOCTYPE>
+    selectBg.addEventListener('change', () =>
+      selectBg.value === 'black' ? update('black', 'white') : update('white', 'black'),
+    );
+  </script>
+  <!-- <script>
+    const select = document.querySelector('select');
+    const para = document.querySelector('p');
+    select.addEventListener('change', setWeather);
+
+    function setWeather() {
+      const choice = select.value;
+
+      switch (choice) {
+        case 'sunny':
+          para.textContent = 'It is nice and sunny outside today. Wear shorts! Go ' +
+            'to the beach, or the park, and get an ice cream.';
+          break;
+        case 'rainy':
+          para.textContent = 'Rain is falling outside; take a rain coat and an ' +
+            'umbrella, and don\'t stay out for too long.';
+          break;
+        case 'snowing':
+          para.textContent = 'The snow is coming down - it is freezing! Best ' +
+            'to stay in with a cup of hot chocolate, or go build a snowman.';
+          break;
+        case 'overcast':
+          para.textContent = 'It isn\'t raining, but the sky is grey and gloomy;' +
+            ' it could turn any miunute, so take a rain coat just in case.';
+          break;
+        default:
+          para.textContent = '';
+      }
+    }
+  </script> -->
+</body>
+
+</html>

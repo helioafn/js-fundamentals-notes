@@ -1,8 +1,11 @@
 /*  Declaração de condicionais
     JavaScript possui as seguintes declarações condicionais
-    if -> para especificar um bloco de código a ser executado, se uma condição for verdadeira
-    else -> para especificar um bloco de código a ser executado, se a mesma condição for falsa
-    else if -> para especificar uma nova condição para testar, se a primeira condição for falsa
+    if -> para especificar um bloco de código a ser executado,
+     se uma condição for verdadeira
+    else -> para especificar um bloco de código a ser executado,
+     se a mesma condição for falsa
+    else if -> para especificar uma nova condição para testar, 
+     se a primeira condição for falsa
     switch -> para especifica N blocos de código alternativos a serem executados
 */
 
@@ -10,7 +13,7 @@
 let hour = 13;
 let greeting = '';
 
-if (hour < 18) { 
+if (hour < 18) {
     greeting = 'Good day';
 } // greeting now has 'Good day'
 
