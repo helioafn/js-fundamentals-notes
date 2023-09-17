@@ -83,7 +83,8 @@ false || alert('printed');
 
 /* 
     AND (&&)
-    Na programação clássica, AND retorna true somente e somente se ambos os operandos forem truthy, caso contrário retorna false
+    Na programação clássica, AND retorna true somente e somente se ambos os
+    operandos forem truthy, caso contrário retorna false.
 */
 resultado = true && true; // true
 resultado = false && true; // false
@@ -103,30 +104,31 @@ if (1 && 0) { // calculado como true && false
 }
 
 /*
-    AND (&&) procura o primeiro valor falsy
-    Dados múltiplos operandos
-    O operador (&&) faz o seguinte
-    Calcula operandos da esquerda para a direita
-    Para cada operando, converte em booleano. Se o resultado for false, para e retorna o valor original do operando (antes da conversão)
-    Se todos os operandos forem calculados (todos forem truthy), retorna o último operando
+    AND (&&) procura o primeiro valor falsy dados múltiplos operandos, 
+    o operador (&&) faz o seguinte calcula operandos da esquerda para a direita.
+    Para cada operando, converte em booleano. Se o resultado for false, para e
+    retorna o valor original do operando (antes da conversão).
+    Se todos os operandos forem calculados (todos forem truthy),
+    retorna o último operando.
 */
 resultado = 1 && 0; // 0
 resultado = 1 && 5; // 5
 resultado = null && 5; // null
 resultado = 0 && 'no matter what'; // 0
 
-// Podemos passar varios valores em sequência, veja como o primeiro falsy/último valor é retornado
+// Podemos passar varios valores em sequência, veja como o primeiro falsy ou 
+// último valor é retornado
 resultado = 1 && 2 && null && 3; // null
 resultado = 1 && 2 && 3; // 3, o último valor
 
 // A precedência de AND (&&) é maior que OR (||)
 
 /* 
-    ! (NOT)
-    O operador booleano NOT é representado por (!)
-    A sintaxe é bem simples: resultado = !value;
-    O operador aceita um único arguemnto e faz o seguinte
-    Converte o operando para booleano e retorna o valor inverso
+  ! (NOT)
+  O operador booleano NOT é representado por (!)
+  A sintaxe é bem simples: resultado = !value;
+  O operador aceita um único arguemnto e faz o seguinte
+  Converte o operando para booleano e retorna o valor inverso
 */
 resultado = !true; // false
 resultado = !0; // true
@@ -135,14 +137,15 @@ resultado = !0; // true
 resultado = !!'non-empty string'; // true
 resultado = !!null;
 
-// O primeiro NOT converte o valor para booleano e retorna o inverso, e o segundo NOT
-// inverte de novo. No fim, temos uma conversão valor para booleano.
-// Tem uma maneira um pouco mais verbosa de fazer a mesma coisa - a função interna Boolean()
+/* O primeiro NOT converte o valor para booleano e retorna o inverso, e o 
+segundo NOT inverte de novo. No fim, temos uma conversão valor para booleano.
+Tem uma maneira um pouco mais verbosa de fazer a mesma coisa - a função 
+interna Boolean() */
 resultado = Boolean('non-empty String'); // true
 resultado = Boolean(null); // false
 
-// A precedência de NOT (!) é a maior de todos os operadores lógicos, então sempre executa primeiro
-// antes de && ou ||
+// A precedência de NOT (!) é a maior de todos os operadores lógicos, então 
+// sempre executa primeiro antes de && ou ||.
 
 // Alguns exemplos usando operadores lógicos
 // Escreva uma condição que cheque se a idade está entre 14 e 90 (ambos inclusos)
@@ -163,14 +166,14 @@ if (age < 14 || age > 90) {
 }
 
 /* 
-    Cheque o login
-        Escreva um código que peça o login com prompt()
-        Se o visitante escrever 'Admin', então peça a senha com prompt(), se o input é vazio ou ESC for pressionado, exiba 'cancelado',
-        se for outra string exiba 'Não conheço você'
-        A senha é checada da seguinte maneira
-        se for igual a 'TheMaster', então exiba 'Bem vindo'
-        se for outra string, exiba 'Senha incorreta'
-        se for uma string vazia ou input cancelado, exiba 'Cancelado'
+  Cheque o login
+  Escreva um código que peça o login com prompt()
+  Se o visitante escrever 'Admin', então peça a senha com prompt(), se o input
+  for vazio ou ESC for pressionado, exiba 'cancelado', se for outra string exiba
+  'Não conheço você'.
+  A senha é checada da seguinte maneira se for igual a 'TheMaster', então exiba
+  'Bem vindo'. Se for outra string, exiba 'Senha incorreta'.
+  Se for uma string vazia ou input cancelado, exiba 'Cancelado'.
 */
 let userName = prompt('Quem é você?', '');
 if (userName === 'Admin') {
@@ -194,5 +197,6 @@ if (userName === 'Admin') {
 // Operador ternário (?)
 // condição ? se true executa esse código : se não executa esse código
 let isBirthday = true;
-const saudacao = isBirthday ? 'Feliz aniversário Sr. Smith - esperamos que tenha um ótimo dia!'
-  : 'Bom dia Sr. Smith.';
+const saudacao =
+  isBirthday ? 'Feliz aniversário Sr. Smith - esperamos que tenha um ótimo dia!'
+    : 'Bom dia Sr. Smith.';

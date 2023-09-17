@@ -1,5 +1,6 @@
 // Boolean
-// o tipo booleano só tem dois valores: true ou false (pode-se pensar como sim ou não)
+// o tipo booleano só tem dois valores: true ou false (pode-se pensar como
+// sim ou não)
 let nameFieldChecked = true;
 let ageFieldChecked = false;
 
@@ -39,8 +40,9 @@ age = undefined;
 
 /*  
     Operador typeof
-    Esse operador retorna o tipo do argumento. É útil quando queremos processar diferentemente valores de tipos diferentes 
-    ou apenas fazer uma checagem rápida.
+    Esse operador retorna o tipo do argumento. É útil quando queremos processar
+    diferentemente valores de tipos diferentes ou apenas fazer uma checagem
+    rápida.
     Uma chamada a typeof retorna uma string com o nome do tipo
 */
 typeof undefined; // 'undefined'

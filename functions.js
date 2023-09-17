@@ -180,7 +180,7 @@ let resultado = sum(1, 2); // 3
 //     console.log('Exibindo o filme');
 // }
 
-// Uma função com return vazio ou sem, retorna undefined
+// Uma função com sem return ou com return vazio, retorna undefined
 
 /* 
     Nomeando funções
@@ -224,7 +224,7 @@ let resultado = sum(1, 2); // 3
 // Em JavaScript, uma função não é uma estrutura 'mágica' da linguagem, mas um tipo de valor especial
 // Existe outra sintaxe para criar uma função que é chamada de Function expression
 // Nos permite criar uma nova função no meio de qualquer expressão.
-let sayHi = function() {
+let sayHi = function () {
     console.log('Hello!!');
 };
 
