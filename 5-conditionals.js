@@ -11,24 +11,24 @@
 
 // if
 let hour = 13;
-let greeting = '';
+let greeting = "";
 
 if (hour < 18) {
-    greeting = 'Good day';
+  greeting = "Good day";
 } // greeting now has 'Good day'
 
 // else
 if (hour < 18) {
-    greeting = 'Good day';
+  greeting = "Good day";
 } else {
-    greeting = 'Good evening';
+  greeting = "Good evening";
 } // greeting has 'Good day'
 
 // else if
 if (hour < 10) {
-    greeting = 'Good morning';
+  greeting = "Good morning";
 } else if (hour < 20) {
-    greeting = 'Good day';
+  greeting = "Good day";
 } else {
-    greeting = 'Good evening';
+  greeting = "Good evening";
 } // greeting has 'Good morning'
